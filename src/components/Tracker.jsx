@@ -21,22 +21,21 @@ const Tracker = ({ tracks, createLap }) => {
 
 
   return (
-    <div className="tracker">
-      <input
-        value={value}
-        placeholder='Enter tracker name'
-        className="create-track__input"
-        type="text"
-        onChange={e => setValue(e.target.value)}
-      />
-      <button className="tracker__create-btn"
-        onClick={onTimerStart}
-      >Create</button>
-      <div>
+    <div>
+      <div className="tracker">
+        <input className="tracker__input"
+          value={value}
+          placeholder='Enter tracker name'
+          type="text"
+          onChange={e => setValue(e.target.value)}
+        />
+        <button className="tracker__create-btn"
+          onClick={onTimerStart}
+        >B</button>
+      </div>
+      <div className="tracker__list">
         {tracks.map(track => (
-
           <Timer key={track.id} {...track} />
-
         ))}
       </div>
     </div>

@@ -30,32 +30,32 @@ const Timer = ({ id, name, deleteLap }) => {
 
   // debugger;
   return (
-    <div className="tracker__list-item">
-      <div className="tracker__list">
-        <div className="tracker__name">
-          {name}
-        </div>
-        <div className="tracker__time">
-          {time}
-        </div>
-        <div className="tracker__buttons">
-          {isRunning
-            ? (
-              <button className="tracker__playpause-btn"
-                onClick={() => setIsRunning(false)}
-              ><i className="material-icons md-48">pause_circle_outline</i></button>)
-            : (
-              <button className="tracker__playpause-btn"
-                onClick={() => setIsRunning(true)}
-              ><i className="material-icons md-48">play_circle_outline</i></button>
-            )
-          }
-          <button className="tracker__delete-btn"
-            onClick={() => deleteLap(id)}
-          ><i className="material-icons md-48">remove_circle</i></button>
-        </div>
+
+    <div className="timer" >
+      <div className="timer__name">
+        {name}
+      </div>
+      <div className="timer__time">
+        {time}
+      </div>
+      <div className="timer__buttons">
+        {isRunning
+          ? (
+            <button className="timer__playpause-btn"
+              onClick={() => setIsRunning(false)}
+            ><i className="material-icons md-48">pause_circle_outline</i></button>)
+          : (
+            <button className="timer__playpause-btn"
+              onClick={() => setIsRunning(true)}
+            ><i className="material-icons md-48">play_circle_outline</i></button>
+          )
+        }
+        <button className="timer__delete-btn"
+          onClick={() => deleteLap(id)}
+        ><i className="material-icons md-48">remove_circle_outline</i></button>
       </div>
     </div>
+
   )
 };
 
