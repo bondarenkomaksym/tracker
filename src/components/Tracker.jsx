@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { connect } from "react-redux";
+import Timer from "./Timer";
 import * as trackerActions from "./tracker.actions";
 
-const Tracker = ({ tracks, createLap, deleteLap }) => {
+
+const Tracker = ({ tracks, createLap }) => {
 
   const [value, setValue] = useState('');
-  const [isRunning, setIsRunning] = useState(false);
-  const [seconds, setSeconds] = useState(0);
-
-  let time = moment().hour(0).minute(0).second(seconds).format('HH : mm : ss');
-
-  useEffect(() => {
-    if (isRunning) {
-      const idTimer = window.setInterval(() => {
-        setSeconds(seconds => seconds + 1)
-      }, 1000);
-      return () => window.clearInterval(idTimer);
-    } return undefined;
-  }, [isRunning]);
 
   const onTimerStart = () => {
-    setIsRunning(true);
     const id = Date.now();
     const newLap = {
       id,
@@ -31,40 +19,29 @@ const Tracker = ({ tracks, createLap, deleteLap }) => {
     setValue('');
   }
 
+
   return (
     <div className="tracker">
       <input
         value={value}
         placeholder='Enter tracker name'
+        className="create-track__input"
         type="text"
         onChange={e => setValue(e.target.value)}
       />
-      <button onClick={onTimerStart}>Create</button>
+      <button className="tracker__create-btn"
+        onClick={onTimerStart}
+      >Create</button>
       <div>
-        <div >
-          {tracks.map(track =>
-            <div key={track.id}>
-              <div> {track.name + " " + time}</div>
+        {tracks.map(track => (
 
-              <button onClick={() => setIsRunning(false)}
-              >Pause</button>
+          <Timer key={track.id} {...track} />
 
-              <button onClick={() => setIsRunning(true)}
-              >Play</button>
-
-
-              <button onClick={() => deleteLap(track.id)}
-              >-</button>
-            </div>
-          )
-          }
-
-        </div>
+        ))}
       </div>
     </div>
   )
 };
-
 
 const mapDispatch = {
   createLap: trackerActions.addLap,
