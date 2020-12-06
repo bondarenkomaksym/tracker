@@ -31,7 +31,7 @@ const Tracker = ({ tracks, createLap }) => {
         />
         <button className="tracker__create-btn"
           onClick={onTimerStart}
-        >B</button>
+        ><i className="material-icons md-48">play_circle_filled</i></button>
       </div>
       <div className="tracker__list">
         {tracks.map(track => (

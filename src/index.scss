@@ -7,6 +7,11 @@ body {
   font-size: 24px;
 }
 
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
 #root {
   height: 100vh;
   display: flex;
@@ -15,54 +20,65 @@ body {
   align-items: center;
 }
 
+.material-icons {
+      display: inline-block;
+      line-height: 36px;
+      font-size: 36px;
+      vertical-align: middle;
+}
+
 .tracker {
-  display: flex;
-  width: 500px;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(153, 153, 153);
+    display: flex;
+    width: 500px;
+    height: 42px;
+    background-color: rgb(153, 153, 153);
 
-  &__create-btn {
-    position: relative;
-      // height: 32px;
-      border: 3px solid #ccc;
-      outline: none;
-      cursor: pointer;
-      border-radius: 100%;
-      right: 50px;
-      // margin: 16px;
-      font-size: 18px;
-  }
-
-    &__input {
-        display: flex;
+  &__input {
         width: 100%;
-        height: 40px;
-        margin: 0;
-        padding: 10px;
+        margin-right: -60px;
+        height: 42px;
+        padding-left: 10px;
         border-radius: 20px;
         border: 1px solid rgb(88, 88, 88);
         outline: none;
         font-size: 18px;
     }
+
+  &__create-btn {
+      position: relative;
+      left: 9px;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      border: none;
+  }
 }
 
 .timer {
-   display: flex;
+    display: flex;
+    height: 55px;
     margin: 0;
-    padding: 10px;
+    padding: 0 10 0 10;
 
     &:nth-child(odd) {
       background-color: #efefef;
-  }
+    }
 
   &__time {
     width: 40%;
+    line-height: 55px;
+    font-size: 20px;
     text-align: right;
+    vertical-align: middle;
   }
 
   &__name {
     width: 40%;
+    padding-left: 25px;
+    line-height: 55px;
+    font-size: 20px;
+    text-align: left;
+    vertical-align: middle;
   }
 
   &__buttons {
@@ -85,6 +101,5 @@ body {
     outline: none;
     cursor: pointer;
     border: none;
-    
   }
 }

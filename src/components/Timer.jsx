@@ -43,16 +43,16 @@ const Timer = ({ id, name, deleteLap }) => {
           ? (
             <button className="timer__playpause-btn"
               onClick={() => setIsRunning(false)}
-            ><i className="material-icons md-48">pause_circle_outline</i></button>)
+            ><i className="material-icons md-24">pause_circle_outline</i></button>)
           : (
             <button className="timer__playpause-btn"
               onClick={() => setIsRunning(true)}
-            ><i className="material-icons md-48">play_circle_outline</i></button>
+            ><i className="material-icons md-24">play_circle_outline</i></button>
           )
         }
         <button className="timer__delete-btn"
           onClick={() => deleteLap(id)}
-        ><i className="material-icons md-48">remove_circle_outline</i></button>
+        ><i className="material-icons md-24">remove_circle_outline</i></button>
       </div>
     </div>
 
