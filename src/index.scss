@@ -33,7 +33,7 @@ body {
 .tracker {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 560px;
     height: 46px;
     color: white;
 
@@ -57,7 +57,7 @@ body {
   &__create-btn {
       position: relative;
       bottom: 42px;
-      left: 447px;
+      left: 507px;
       background-color: transparent;
       outline: none;
       cursor: pointer;
@@ -98,6 +98,7 @@ body {
     line-height: 55px;
     text-align: left;
     overflow: hidden;
+    text-overflow: ellipsis; 
     vertical-align: middle;
   }
 

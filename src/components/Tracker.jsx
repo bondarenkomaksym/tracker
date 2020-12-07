@@ -30,6 +30,7 @@ const Tracker = ({ tracks, createLap }) => {
       <div className="tracker__form">
         <input className="tracker__input"
           value={value}
+          maxlength="30"
           placeholder='Enter tracker name'
           type="text"
           onChange={e => setValue(e.target.value)}
