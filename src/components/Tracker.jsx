@@ -19,6 +19,11 @@ const Tracker = ({ tracks, createLap }) => {
     setValue('');
   }
 
+  const onEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      onTimerStart();
+    }
+  }
 
   return (
     <div className="tracker">
@@ -28,6 +33,7 @@ const Tracker = ({ tracks, createLap }) => {
           placeholder='Enter tracker name'
           type="text"
           onChange={e => setValue(e.target.value)}
+          onKeyDown={onEnterPress}
         />
         <button className="tracker__create-btn"
           type="submit"
