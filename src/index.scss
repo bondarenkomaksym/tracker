@@ -135,7 +135,6 @@ body {
 
     &__form {
       width: 100%;
-      height: 46px;
     }
 
     &__input {
@@ -143,8 +142,6 @@ body {
     }
 
     &__create-btn {
-      position: relative;
-      bottom: 42px;
       left: calc(100vw - 53px);
   }
   }
