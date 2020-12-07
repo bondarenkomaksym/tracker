@@ -21,8 +21,8 @@ const Tracker = ({ tracks, createLap }) => {
 
 
   return (
-    <div>
-      <div className="tracker">
+    <div className="tracker">
+      <div className="tracker__form">
         <input className="tracker__input"
           value={value}
           placeholder='Enter tracker name'
@@ -30,9 +30,11 @@ const Tracker = ({ tracks, createLap }) => {
           onChange={e => setValue(e.target.value)}
         />
         <button className="tracker__create-btn"
+          type="submit"
           onClick={onTimerStart}
         ><i className="material-icons md-48">play_circle_filled</i></button>
       </div>
+
       <div className="tracker__list">
         {tracks.map(track => (
           <Timer key={track.id} {...track} />
