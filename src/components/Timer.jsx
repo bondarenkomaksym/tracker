@@ -31,7 +31,7 @@ const Timer = ({ id, name, deleteLap }) => {
   // debugger;
   return (
 
-    <div className="timer" >
+    <div className={`timer ${isRunning ? 'colortimer' : ''}`} >
       <div className="timer__name">
         {name}
       </div>
