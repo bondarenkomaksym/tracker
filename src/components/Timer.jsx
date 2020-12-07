@@ -60,7 +60,6 @@ const Timer = ({ id, name, deleteLap }) => {
 };
 
 const mapDispatch = {
-  createLap: trackerActions.addLap,
   deleteLap: trackerActions.deleteLap,
 }
 

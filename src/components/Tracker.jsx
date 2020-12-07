@@ -46,7 +46,6 @@ const Tracker = ({ tracks, createLap }) => {
 
 const mapDispatch = {
   createLap: trackerActions.addLap,
-  deleteLap: trackerActions.deleteLap,
 }
 
 const mapState = state => {
