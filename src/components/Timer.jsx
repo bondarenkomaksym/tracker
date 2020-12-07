@@ -52,7 +52,7 @@ const Timer = ({ id, name, deleteLap }) => {
         }
         <button className="timer__delete-btn"
           onClick={() => deleteLap(id)}
-        ><i className="material-icons md-24">remove_circle_outline</i></button>
+        ><i className="material-icons md-24">delete_outline</i></button>
       </div>
     </div>
 
