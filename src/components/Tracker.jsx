@@ -27,10 +27,11 @@ const Tracker = ({ tracks, createLap }) => {
 
   return (
     <div className="tracker">
+      <div className="header">tracker</div>
       <div className="tracker__form">
         <input className="tracker__input"
           value={value}
-          maxlength="30"
+          maxLength="30"
           placeholder='Enter tracker name'
           type="text"
           onChange={e => setValue(e.target.value)}

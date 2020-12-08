@@ -11,7 +11,7 @@ const trackerReducer = (state = initialState, action) => {
         ...state,
         tracksList: state.tracksList
           .concat(action.payload.lapData)
-          .sort((a, b) => b.id - a.id)
+          .sort((a, b) => b.id - a.id),
       };
     }
     case DELETE_LAP: {
