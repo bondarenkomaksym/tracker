@@ -21,6 +21,18 @@ const Timer = ({ id, name, deleteLap }) => {
   }, [isRunning]);
 
 
+
+  // useEffect(() => {
+  //   window.addEventListener('beforeunload', () => {
+  //     localStorage.setItem("hereTimerId", JSON.stringify({
+  //       'time': String(time),
+  //       'isRunning': String(isRunning),
+  //       'name': String(name),
+  //       'id': String(id),
+  //     }))
+  //   }, false)
+  // }, [])
+
   const ss = `${(seconds % 60)}`.slice(-2);
   const minutes = `${Math.floor(seconds / 60)}`;
   const mm = `${minutes % 60}`.slice(-2);
@@ -28,9 +40,20 @@ const Timer = ({ id, name, deleteLap }) => {
 
   let time = (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
 
+  const dataTimer = {
+    name,
+    time,
+    isRunning
+  };
+
+  useEffect(() => {
+    return () => {
+      localStorage.setItem(id, JSON.stringify(dataTimer))
+    }
+  }, [time])
+
   // debugger;
   return (
-
     <div className={`timer ${isRunning ? 'colortimer' : ''}`} >
       <div className="timer__name">
         {name}
@@ -55,7 +78,6 @@ const Timer = ({ id, name, deleteLap }) => {
         ><i className="material-icons md-24">delete_outline</i></button>
       </div>
     </div>
-
   )
 };
 
