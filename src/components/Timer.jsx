@@ -28,17 +28,17 @@ const Timer = ({ id, name, deleteLap }) => {
 
   let time = (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
 
-  useEffect(() => {
-    const dataTimer = {
-      id,
-      name,
-      seconds,
-      isRunning,
-    };
-    window.addEventListener('beforeunload', () => {
-      localStorage.setItem(id, JSON.stringify(dataTimer))
-    }, false)
-  }, [time, isRunning])
+  // useEffect(() => {
+  //   const dataTimer = {
+  //     id,
+  //     name,
+  //     seconds,
+  //     isRunning,
+  //   };
+  //   window.addEventListener('beforeunload', () => {
+  //     localStorage.setItem(id, JSON.stringify(dataTimer))
+  //   }, false)
+  // }, [time, isRunning])
 
 
   // debugger;
