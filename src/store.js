@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from "redux";
-import trackerReducer from './components/tracker.reducer';
+import timerReducer from './components/timer.reducer';
 
 const reducer = combineReducers({
-  tracks: trackerReducer
+  timers: timerReducer
 })
 
 function saveToLocalStorage(state) {

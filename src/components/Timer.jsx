@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 // import moment from "moment";
 import { connect } from "react-redux";
-import * as trackerActions from "./tracker.actions";
+import * as timerActions from "./timer.actions";
 
 
-const Timer = ({ id, name, deleteLap }) => {
+const Timer = ({ id, name, deleteTimer }) => {
 
   const [isRunning, setIsRunning] = useState(true);
   const [seconds, setSeconds] = useState(0);
@@ -75,7 +75,7 @@ const Timer = ({ id, name, deleteLap }) => {
           )
         }
         <button className="timer__delete-btn"
-          onClick={() => deleteLap(id)}
+          onClick={() => deleteTimer(id)}
         ><i className="material-icons md-24">delete_outline</i></button>
       </div>
     </div>
@@ -84,7 +84,7 @@ const Timer = ({ id, name, deleteLap }) => {
 
 
 const mapDispatch = {
-  deleteLap: trackerActions.deleteLap,
+  deleteTimer: timerActions.deleteTimer,
 }
 
 const ConnectedTimer = connect(null, mapDispatch)(Timer);

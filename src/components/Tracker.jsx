@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { connect } from "react-redux";
 import Timer from "./Timer";
-import * as trackerActions from "./tracker.actions";
+import * as timerActions from "./timer.actions";
 
 
-const Tracker = ({ tracks, createLap }) => {
+const Tracker = ({ timers, createTimer }) => {
 
   // const localState = () => Object.values(localStorage)
   //   .filter(element => element.includes('seconds'))
@@ -29,11 +29,11 @@ const Tracker = ({ tracks, createLap }) => {
 
   const onTimerStart = () => {
     const id = Date.now();
-    const newLap = {
+    const newTimer = {
       id,
       name: `${value ? value : moment().format('YYYY-MM-DD')}`,
     }
-    createLap(newLap);
+    createTimer(newTimer);
     setValue('');
   }
 
@@ -62,9 +62,9 @@ const Tracker = ({ tracks, createLap }) => {
       </div>
 
       <div className="tracker__list">
-        {tracks.sort((a, b) => b.id - a.id).map(track => {
-          if (track !== undefined) {
-            return <Timer key={track.id} {...track} />
+        {timers.sort((a, b) => b.id - a.id).map(timer => {
+          if (timer !== undefined) {
+            return <Timer key={timer.id} {...timer} />
           }
         })}
       </div>
@@ -73,12 +73,12 @@ const Tracker = ({ tracks, createLap }) => {
 };
 
 const mapDispatch = {
-  createLap: trackerActions.addLap,
+  createTimer: timerActions.addTimer,
 }
 
 const mapState = state => {
   return {
-    tracks: state.tracks.tracksList,
+    timers: state.timers.timersList,
   }
 }
 
