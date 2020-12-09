@@ -20,7 +20,7 @@ const Timer = ({ id, name, deleteLap }) => {
     } return undefined;
   }, [isRunning]);
 
-
+  // debugger;
   const ss = `${(seconds % 60)}`.slice(-2);
   const minutes = `${Math.floor(seconds / 60)}`;
   const mm = `${minutes % 60}`.slice(-2);
@@ -30,8 +30,9 @@ const Timer = ({ id, name, deleteLap }) => {
 
   useEffect(() => {
     const dataTimer = {
+      id,
       name,
-      time,
+      seconds,
       isRunning,
     };
     window.addEventListener('beforeunload', () => {

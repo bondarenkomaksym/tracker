@@ -9,6 +9,8 @@ const Tracker = ({ tracks, createLap }) => {
 
   const [value, setValue] = useState('');
 
+  // const allData = localData.length <= 0 ? tracks : localData;
+  // debugger;
   const onTimerStart = () => {
     const id = Date.now();
     const newLap = {
@@ -24,7 +26,7 @@ const Tracker = ({ tracks, createLap }) => {
       onTimerStart();
     }
   }
-
+  // debugger;
   return (
     <div className="tracker">
       <div className="header">tracker</div>
@@ -44,9 +46,11 @@ const Tracker = ({ tracks, createLap }) => {
       </div>
 
       <div className="tracker__list">
-        {tracks.map(track => (
-          <Timer key={track.id} {...track} />
-        ))}
+        {tracks.sort((a, b) => b.id - a.id).map(track => {
+          if (track !== undefined) {
+            return <Timer key={track.id} {...track} />
+          }
+        })}
       </div>
     </div>
   )

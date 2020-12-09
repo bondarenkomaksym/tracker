@@ -5,7 +5,7 @@ export const addLap = (lapData) => {
   return {
     type: ADD_LAP,
     payload: {
-      lapData
+      lapData,
     }
   };
 }
