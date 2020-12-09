@@ -36,9 +36,21 @@ const Timer = ({ id, name, deleteLap }) => {
   //     isRunning,
   //   };
   //   window.addEventListener('beforeunload', () => {
+
   //     localStorage.setItem(id, JSON.stringify(dataTimer))
   //   }, false)
-  // }, [time, isRunning])
+  // })
+
+  // useEffect(() => {
+  //   const dataTimer = {
+  //     id,
+  //     name,
+  //     seconds,
+  //     isRunning,
+  //   };
+  //   localStorage.setItem(id, JSON.stringify(dataTimer))
+  // })
+
 
 
   // debugger;
@@ -69,6 +81,7 @@ const Timer = ({ id, name, deleteLap }) => {
     </div>
   )
 };
+
 
 const mapDispatch = {
   deleteLap: trackerActions.deleteLap,

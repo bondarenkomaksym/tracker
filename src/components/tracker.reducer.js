@@ -1,13 +1,9 @@
 import { ADD_LAP, DELETE_LAP } from './tracker.actions';
 
-// const getLocalStorageData = () => {
-
-//   return Object.values(localStorage)
-//     .filter(element => element.includes('seconds'))
-//     .map(value => JSON.parse(value))
-// }
-// // console.log(getLocalStorageData());
-// const localData = getLocalStorageData();
+// const localState = () => Object.values(localStorage)
+//   .filter(element => element.includes('seconds'))
+//   .map(value => JSON.parse(value));
+// let data = tracks.concat(localState());
 
 const initialState = {
   tracksList: [],
@@ -20,11 +16,11 @@ const trackerReducer = (state = initialState, action) => {
         ...state,
         tracksList: state.tracksList
           .concat(action.payload.lapData)
-        // .concat(localData),
       };
     }
     case DELETE_LAP: {
       const newList = state.tracksList.filter(track => track.id !== action.payload.lapId);
+      localStorage.removeItem(action.payload.lapId);
       return {
         ...state,
         tracksList: newList,
