@@ -13,8 +13,7 @@ const Tracker = ({ tracks, createLap }) => {
   // let data = tracks.concat(localState());
 
   const [value, setValue] = useState('');
-
-
+  // const allTracks = data.length !== 0 ? data : tracks;
 
   // useEffect(() => {
   //   const getLocalStorageData = () => {
