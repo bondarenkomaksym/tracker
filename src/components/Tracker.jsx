@@ -15,6 +15,7 @@ const Tracker = ({ timers, createTimer }) => {
     const newTimer = {
       id,
       name: `${value ? value : moment().format('YYYY-MM-DD')}`,
+      isRunning: 1,
     }
     createTimer(newTimer);
     setValue('');

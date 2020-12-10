@@ -6,11 +6,12 @@ import * as timerActions from "./timer.actions";
 
 const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
   // debugger;
-  const actualTimer = id => timers.filter(timer => timer.id === id);
-  const actualStatus = id => timers.filter(timer => timer.id === id);
-  // console.log(actualStatus(id)[0].isRunning);
-  const [isRunning, setIsRunning] = useState(actualStatus(id)[0].isRunning || 1);
-  const [seconds, setSeconds] = useState(actualTimer(id)[0].seconds || 0);
+  const actualData = id => timers.filter(timer => timer.id === id);
+
+  console.log(actualData(id)[0].isRunning);
+
+  const [isRunning, setIsRunning] = useState(actualData(id)[0].isRunning && 1);
+  const [seconds, setSeconds] = useState(actualData(id)[0].seconds || 0);
 
   // let time = moment().hour(0).minute(0).second(seconds).format('HH:mm:ss');
 
