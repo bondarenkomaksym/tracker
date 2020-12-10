@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-// import moment from "moment";
 import { connect } from "react-redux";
 import * as timerActions from "./timer.actions";
 
 
 const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
-  // debugger;
+
   const actualData = id => timers.filter(timer => timer.id === id);
 
-  console.log(actualData(id)[0].isRunning);
+  const transformSeconds = actualData(id)[0].isRunning === 1
+    ? Date.now() - actualData(id)[0].id + actualData(id)[0].seconds
+    : actualData(id)[0].seconds;
 
   const [isRunning, setIsRunning] = useState(actualData(id)[0].isRunning && 1);
-  const [seconds, setSeconds] = useState(actualData(id)[0].seconds || 0);
+  const [seconds, setSeconds] = useState(Math.floor(transformSeconds / 1000) || 0);
 
-  // let time = moment().hour(0).minute(0).second(seconds).format('HH:mm:ss');
 
   useEffect(() => {
     if (isRunning === 1) {
@@ -77,7 +77,6 @@ const mapDispatch = {
 }
 
 const mapState = state => {
-  // debugger;
   return {
     timers: state.timers.timersList,
   }
