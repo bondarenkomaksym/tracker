@@ -7,12 +7,18 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
 
   const actualData = id => timers.filter(timer => timer.id === id);
 
+  // const currentSeconds = Math.floor(((Date.now() - actualData(id)[0].id) / 1000 / 300));
+
+  // console.log(currentSeconds);
+
   const transformSeconds = actualData(id)[0].isRunning === 1
-    ? Date.now() - actualData(id)[0].id + actualData(id)[0].seconds
+    ? Math.floor(((Date.now() - actualData(id)[0].id) / 1000))
     : actualData(id)[0].seconds;
 
+  // console.log(transformSeconds);
+
   const [isRunning, setIsRunning] = useState(actualData(id)[0].isRunning && 1);
-  const [seconds, setSeconds] = useState(Math.floor(transformSeconds / 1000) || 0);
+  const [seconds, setSeconds] = useState(transformSeconds || 0);
 
 
   useEffect(() => {

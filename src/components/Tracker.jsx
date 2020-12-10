@@ -29,6 +29,7 @@ const Tracker = ({ timers, createTimer }) => {
   // debugger;
   return (
     <div className="tracker">
+      <div className="headerblur"><div className="headerblur__text">time</div></div>
       <div className="header">tracker</div>
       <div className="tracker__form">
         <input className="tracker__input"

@@ -32,7 +32,6 @@ const timerReducer = (state = initialState, action) => {
 
     case DELETE_TIMER: {
       const newList = state.timersList.filter(timer => timer.id !== action.payload.timerId);
-      localStorage.removeItem(action.payload.timerId);
       return {
         ...state,
         timersList: newList,
