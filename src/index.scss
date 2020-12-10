@@ -74,7 +74,7 @@ body {
   width: 70px;
   height: 70px;
   top: 36px;
-  left: 172px;
+  left: 170px;
   background: rgba(255,255,255, 0.2);
   border-radius: 50%;
   z-index: 1;
@@ -82,6 +82,7 @@ body {
   border: solid 2px transparent;
   background-clip: padding-box;
   box-shadow: 10px 10px 10px  rgba(46, 54, 68, 0.03);
+  animation: move 6s linear infinite;
   
 
   &__text{
@@ -89,6 +90,18 @@ body {
     font-weight: bold;
     line-height: 66px;
     color:rgba(255, 255, 255, 0.548);
+  }
+}
+
+@keyframes move {
+  0% {
+    left: 170px;
+  }
+  50% {
+    left: 320px;
+  }
+  100% {
+    left: 170px;
   }
 }
 
@@ -181,6 +194,17 @@ body {
   }
   .headerblur{
     left: calc(100vw - 295px);
+  }
+  @keyframes move {
+    0% {
+      left: calc(100vw - 295px);
+    }
+    50% {
+      left: calc(100vw - 150px);
+    }
+    100% {
+      left: calc(100vw - 295px);
+    }
   }
 }
 
