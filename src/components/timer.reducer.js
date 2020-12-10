@@ -1,9 +1,5 @@
-import { ADD_TIMER, DELETE_TIMER } from './timer.actions';
+import { ADD_TIMER, DELETE_TIMER, UPDATE_TIMER } from './timer.actions';
 
-// const localState = () => Object.values(localStorage)
-//   .filter(element => element.includes('seconds'))
-//   .map(value => JSON.parse(value));
-// let data = timers.concat(localState());
 
 const initialState = {
   timersList: [],
@@ -18,6 +14,22 @@ const timerReducer = (state = initialState, action) => {
           .concat(action.payload.timerData)
       };
     }
+    case UPDATE_TIMER: {
+      const updatedList = JSON.parse(JSON.stringify(state.timersList));
+      for (let index = 0; index < updatedList.length; index++) {
+        let timer = updatedList[index];
+        if (timer.id === action.payload.updateData.id) {
+          timer = action.payload.updateData
+          updatedList[index] = timer;
+          break;
+        }
+      }
+      return {
+        ...state,
+        timersList: updatedList,
+      };
+    }
+
     case DELETE_TIMER: {
       const newList = state.timersList.filter(timer => timer.id !== action.payload.timerId);
       localStorage.removeItem(action.payload.timerId);

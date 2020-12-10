@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { connect } from "react-redux";
 import Timer from "./Timer";
@@ -7,27 +7,10 @@ import * as timerActions from "./timer.actions";
 
 const Tracker = ({ timers, createTimer }) => {
 
-  // const localState = () => Object.values(localStorage)
-  //   .filter(element => element.includes('seconds'))
-  //   .map(value => JSON.parse(value));
-  // let data = tracks.concat(localState());
-
   const [value, setValue] = useState('');
-  // const allTracks = data.length !== 0 ? data : tracks;
-
-  // useEffect(() => {
-  //   const getLocalStorageData = () => {
-
-  //     return Object.values(localStorage)
-  //       .filter(element => element.includes('seconds'))
-  //       .map(value => JSON.parse(value))
-  //   }
-  //   console.log(getLocalStorageData());
-  //   const localData = getLocalStorageData();
-  // }, [])
-
 
   const onTimerStart = () => {
+
     const id = Date.now();
     const newTimer = {
       id,

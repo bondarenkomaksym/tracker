@@ -6,6 +6,7 @@ const reducer = combineReducers({
 })
 
 function saveToLocalStorage(state) {
+  // debugger;
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem("persistantState", serialisedState);
@@ -15,6 +16,7 @@ function saveToLocalStorage(state) {
 }
 
 function loadFromLocalStorage() {
+  // debugger;
   try {
     const serialisedState = localStorage.getItem("persistantState");
     if (serialisedState === null) return undefined;

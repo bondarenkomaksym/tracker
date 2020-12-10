@@ -4,15 +4,18 @@ import { connect } from "react-redux";
 import * as timerActions from "./timer.actions";
 
 
-const Timer = ({ id, name, deleteTimer }) => {
-
-  const [isRunning, setIsRunning] = useState(true);
-  const [seconds, setSeconds] = useState(0);
+const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
+  // debugger;
+  const actualTimer = id => timers.filter(timer => timer.id === id);
+  const actualStatus = id => timers.filter(timer => timer.id === id);
+  // console.log(actualStatus(id)[0].isRunning);
+  const [isRunning, setIsRunning] = useState(actualStatus(id)[0].isRunning || 1);
+  const [seconds, setSeconds] = useState(actualTimer(id)[0].seconds || 0);
 
   // let time = moment().hour(0).minute(0).second(seconds).format('HH:mm:ss');
 
   useEffect(() => {
-    if (isRunning) {
+    if (isRunning === 1) {
       const idTimer = window.setInterval(() => {
         setSeconds(seconds => seconds + 1)
       }, 1000);
@@ -28,34 +31,19 @@ const Timer = ({ id, name, deleteTimer }) => {
 
   let time = (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
 
-  // useEffect(() => {
-  //   const dataTimer = {
-  //     id,
-  //     name,
-  //     seconds,
-  //     isRunning,
-  //   };
-  //   window.addEventListener('beforeunload', () => {
-
-  //     localStorage.setItem(id, JSON.stringify(dataTimer))
-  //   }, false)
-  // })
-
-  // useEffect(() => {
-  //   const dataTimer = {
-  //     id,
-  //     name,
-  //     seconds,
-  //     isRunning,
-  //   };
-  //   localStorage.setItem(id, JSON.stringify(dataTimer))
-  // })
-
-
+  useEffect(() => {
+    const updateData = {
+      id,
+      name,
+      seconds,
+      isRunning,
+    };
+    updateTimer(updateData);
+  }, [seconds, isRunning])
 
   // debugger;
   return (
-    <div className={`timer ${isRunning ? 'colortimer' : ''}`} >
+    <div className={`timer ${isRunning !== 0 ? 'colortimer' : ''}`} >
       <div className="timer__name">
         {name}
       </div>
@@ -66,11 +54,11 @@ const Timer = ({ id, name, deleteTimer }) => {
         {isRunning
           ? (
             <button className="timer__playpause-btn"
-              onClick={() => setIsRunning(false)}
+              onClick={() => setIsRunning(0)}
             ><i className="material-icons md-24">pause_circle_outline</i></button>)
           : (
             <button className="timer__playpause-btn"
-              onClick={() => setIsRunning(true)}
+              onClick={() => setIsRunning(1)}
             ><i className="material-icons md-24">play_circle_outline</i></button>
           )
         }
@@ -82,10 +70,17 @@ const Timer = ({ id, name, deleteTimer }) => {
   )
 };
 
-
 const mapDispatch = {
   deleteTimer: timerActions.deleteTimer,
+  updateTimer: timerActions.updateTimer,
 }
 
-const ConnectedTimer = connect(null, mapDispatch)(Timer);
+const mapState = state => {
+  // debugger;
+  return {
+    timers: state.timers.timersList,
+  }
+}
+
+const ConnectedTimer = connect(mapState, mapDispatch)(Timer);
 export default ConnectedTimer;
