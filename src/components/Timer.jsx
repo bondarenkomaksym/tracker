@@ -12,7 +12,7 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
   // console.log(currentSeconds);
 
   const transformSeconds = actualData(id)[0].isRunning === 1
-    ? Math.floor(((Date.now() - actualData(id)[0].id) / 1000))
+    ? Math.floor(((Date.now() - actualData(id)[0].id) / 1000) - actualData(id)[0].pause)
     : actualData(id)[0].seconds;
 
   // console.log(transformSeconds);
@@ -38,12 +38,25 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
 
   let time = (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
 
+  //поправка на паузу
+  const [pause, setPause] = useState(actualData(id)[0].pause || 0);
+
+  useEffect(() => {
+    if (isRunning === 0) {
+      const idPause = window.setInterval(() => {
+        setPause(pause => pause + 1)
+      }, 1000);
+      return () => window.clearInterval(idPause);
+    } return undefined;
+  }, [isRunning]);
+
   useEffect(() => {
     const updateData = {
       id,
       name,
       seconds,
       isRunning,
+      pause
     };
     updateTimer(updateData);
   }, [seconds, isRunning])

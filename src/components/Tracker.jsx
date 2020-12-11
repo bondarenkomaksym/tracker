@@ -35,7 +35,7 @@ const Tracker = ({ timers, createTimer }) => {
         <input className="tracker__input"
           value={value}
           maxLength="30"
-          placeholder='Enter tracker name'
+          placeholder='Enter timer name'
           type="text"
           onChange={e => setValue(e.target.value)}
           onKeyDown={onEnterPress}
