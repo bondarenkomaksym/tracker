@@ -47,11 +47,7 @@ const Tracker = ({ timers, createTimer }) => {
       </div>
 
       <div className="tracker__list">
-        {timers.sort((a, b) => b.id - a.id).map(timer => {
-          if (timer !== undefined) {
-            return <Timer key={timer.id} {...timer} />
-          }
-        })}
+        {timers.sort((a, b) => b.id - a.id).map(timer => <Timer key={timer.id} {...timer} />)}
       </div>
     </div>
   )
