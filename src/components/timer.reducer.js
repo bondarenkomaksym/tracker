@@ -15,15 +15,12 @@ const timerReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_TIMER: {
-      const updatedList = JSON.parse(JSON.stringify(state.timersList));
-      for (let index = 0; index < updatedList.length; index++) {
-        let timer = updatedList[index];
-        if (timer.id === action.payload.updateData.id) {
-          timer = action.payload.updateData
-          updatedList[index] = timer;
-          break;
-        }
-      }
+      const copy = JSON.parse(JSON.stringify(state.timersList));
+      const updatedList = copy.map(el => {
+        if (el.id === action.payload.updateData.id) {
+          el = action.payload.updateData
+        } return el;
+      });
       return {
         ...state,
         timersList: updatedList,
