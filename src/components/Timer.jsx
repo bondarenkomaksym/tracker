@@ -8,7 +8,7 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
   const actualData = id => timers.filter(timer => timer.id === id);
 
   const transformSeconds = actualData(id)[0].isRunning === 1
-    ? Math.floor(((Date.now() - actualData(id)[0].id) / 1000) - actualData(id)[0].pause)
+    ? ~~(((Date.now() - actualData(id)[0].id) / 1000) - actualData(id)[0].pause)
     : actualData(id)[0].seconds;
 
   const [isRunning, setIsRunning] = useState(actualData(id)[0].isRunning && 1);
@@ -26,9 +26,9 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
 
   // debugger;
   const ss = `${(seconds % 60)}`.slice(-2);
-  const minutes = `${Math.floor(seconds / 60)}`;
+  const minutes = `${~~(seconds / 60)}`;
   const mm = `${minutes % 60}`.slice(-2);
-  const hh = `${Math.floor(seconds / 3600)}`.slice(-2);
+  const hh = `${~~(seconds / 3600)}`.slice(-2);
 
   let time = (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
 
@@ -44,13 +44,23 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
     } return undefined;
   }, [isRunning]);
 
+  //поправка на перезагрузку
+  // const [reload, setReload] = useState(0);
+  // window.addEventListener('beforeunload', () => {
+  //   // debugger;
+  //   setReload(reload => reload = Date.now())
+  // }, false)
+
+
   useEffect(() => {
+    // debugger;
     const updateData = {
       id,
       name,
       seconds,
       isRunning,
-      pause
+      pause,
+      // reload
     };
     updateTimer(updateData);
   }, [seconds, isRunning])
