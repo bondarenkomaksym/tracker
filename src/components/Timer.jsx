@@ -8,7 +8,7 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
   const actualData = id => timers.filter(timer => timer.id === id);
 
   const transformSeconds = actualData(id)[0].isRunning === 1
-    ? ~~(((Date.now() - actualData(id)[0].id) / 1000) - actualData(id)[0].pause)
+    ? ~~((Date.now() - actualData(id)[0].id) / 1000) - actualData(id)[0].pause
     : actualData(id)[0].seconds;
 
   const [isRunning, setIsRunning] = useState(actualData(id)[0].isRunning && 1);
