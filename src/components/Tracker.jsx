@@ -26,7 +26,7 @@ const Tracker = ({ timers, createTimer }) => {
       onTimerStart();
     }
   }
-  // debugger;
+
   return (
     <div className="tracker">
       <div className="headerblur"><div className="headerblur__text">time</div></div>
@@ -59,7 +59,7 @@ const mapDispatch = {
 
 const mapState = state => {
   return {
-    timers: state.timers.timersList,
+    timers: state.timersList,
   }
 }
 

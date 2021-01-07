@@ -1,12 +1,9 @@
-import { createStore, combineReducers } from "redux";
+import { createStore } from "redux";
 import timerReducer from './components/timer.reducer';
 
-const reducer = combineReducers({
-  timers: timerReducer
-})
 
 function saveToLocalStorage(state) {
-  // debugger;
+
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem("persistantState", serialisedState);
@@ -16,7 +13,7 @@ function saveToLocalStorage(state) {
 }
 
 function loadFromLocalStorage() {
-  // debugger;
+
   try {
     const serialisedState = localStorage.getItem("persistantState");
     if (serialisedState === null) return undefined;
@@ -27,15 +24,11 @@ function loadFromLocalStorage() {
   }
 }
 
-const store = createStore(reducer,
+const store = createStore(timerReducer,
   loadFromLocalStorage(),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
-
-// const store = createStore(reducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
 
 export default store;

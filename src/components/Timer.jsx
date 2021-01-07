@@ -24,7 +24,7 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
     } return undefined;
   }, [isRunning]);
 
-  // debugger;
+
   const ss = `${(seconds % 60)}`.slice(-2);
   const minutes = `${~~(seconds / 60)}`;
   const mm = `${minutes % 60}`.slice(-2);
@@ -53,7 +53,7 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
 
 
   useEffect(() => {
-    // debugger;
+
     const updateData = {
       id,
       name,
@@ -65,7 +65,7 @@ const Timer = ({ id, name, deleteTimer, updateTimer, timers }) => {
     updateTimer(updateData);
   }, [seconds, isRunning])
 
-  // debugger;
+
   return (
     <div className={`timer ${isRunning !== 0 ? 'colortimer' : ''}`} >
       <div className="timer__name">
@@ -101,7 +101,7 @@ const mapDispatch = {
 
 const mapState = state => {
   return {
-    timers: state.timers.timersList,
+    timers: state.timersList,
   }
 }
 
